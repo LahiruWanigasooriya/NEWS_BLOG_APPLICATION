@@ -21,7 +21,7 @@ const blogSchema = new mongoose.Schema({
         minLength: [250, "Blog intro must contain at least 10 characters"],
     },
 
-    
+
     paraOneImage: {
         type: String,
         required: true,
@@ -74,18 +74,22 @@ const blogSchema = new mongoose.Schema({
         minLength: [50, "Blog must contain at least 50 characters"],
     },
 
-    category:{
+    category: {
         type: String,
         required: true,
     },
 
-    createdBy:{
+    createdBy: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
         required: true,
     },
 
-    auhterAvatar:
+    auhterAvatar: {
+        type: String,
+        required: true,
+    },
 
-    
 });
+
+export const Blog = mongoose.model("Blog", blogSchema);
