@@ -19,4 +19,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-export default app;
+export default app;  // Export the app object to be used in other files
