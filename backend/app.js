@@ -3,28 +3,23 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { dbConnection } from "./database/dbConnection.js";
-import { errorMiddleware } from './middlewares/error.js';
-import userRouter from "./routes/userRouter.js";
 
 const app = express();
 dotenv.config({ path: "./config/config.env" });
 
 app.use(
     cors({
-        origin: [],
+        origin: [process.env.FRONTEND_URL],
         methods: ["GET", "PUT", "DELETE", "POST"],
-        credentials: true
-    }));
+        credentials: true,
+    })
+);
 
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use("/api/v1", userRouter);
+;
 
 dbConnection(); // Connect to database
-
-app.use(errorMiddleware); // Middleware for error handling
-
 
 export default app;  // Export the app object to be used in other files
