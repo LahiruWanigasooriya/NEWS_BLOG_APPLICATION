@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 import validator from "validator";
+
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -8,7 +10,7 @@ const userSchema = new mongoose.Schema({
         minLength: [3, "Name should be at least 3 characters"],
         maxLength: [32, "Name cannot exceed 32 characters"],
     },
-    email: { // Fixed typo from 'emial' to 'email'
+    email: {
         type: String,
         required: true,
         validate: [validator.isEmail, "Please enter a valid email"],
@@ -32,13 +34,14 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true,
-        enum: ["Reader", "Author"] // Fixed typo from 'Auther' to 'Author'
+        enum: ["Reader", "Author"]
     },
     password: {
-        type: String, // Defined as String
-        required: true, // Added 'required: true' to make password mandatory
+        type: String,
+        required: true,
         minLength: [8, "Password should be at least 8 characters"],
         maxLength: [32, "Password cannot exceed 32 characters"],
+        select: false
     },
     createdOn: {
         type: Date,
@@ -46,4 +49,15 @@ const userSchema = new mongoose.Schema({
     },
 });
 
-export const User = mongoose.model("User", userSchema); // User is the collection name
+userSchema.pre("save", async function () {
+    if (!this.isModified("password")) {
+        next();
+    }
+    this.password = await bcrypt.hash(this.password, 10);
+});
+
+userSchema.methods.comparePassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
+
+export const User = mongoose.model("User", userSchema);
