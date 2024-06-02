@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import { dbConnection } from './database/dbConnection.js';
 import { errorMiddleware } from './middlewares/error.js';
 import userRouter from './routes/userRouter.js';
+import blogRouter from './routes/blogRouter.js';
 import fileUpload from 'express-fileupload';
 
 const app = express();
@@ -27,7 +28,8 @@ app.use(fileUpload({
     tempFileDir: '/tmp/',
 }));
 
-app.use('/api/v1', userRouter);
+app.use('/api/v1/user', userRouter);
+app.use('/api/v1/blog', blogRouter);
 
 dbConnection(); // Connect to the database
 

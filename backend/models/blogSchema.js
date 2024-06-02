@@ -8,12 +8,14 @@ const blogSchema = new mongoose.Schema({
         maxLength: [40, "Blog must contain at most 40 characters"],
     },
     mainImage: {
-        type: String,
-        required: true,
-    },
-    url: {
-        type: String,
-        required: true,
+        public_id: {
+            type: String,
+            required: true,
+        },
+        url: {
+            type: String,
+            required: true,
+        },
     },
     intro: {
         type: String,
@@ -23,10 +25,13 @@ const blogSchema = new mongoose.Schema({
 
 
     paraOneImage: {
-        type: String,
-        required: true,
+        public_id: {
+            type: String,
+        },
+        url: {
+            type: String,
+        },
     },
-
     paraOneDescrition: {
         type: String,
         required: true,
@@ -40,10 +45,13 @@ const blogSchema = new mongoose.Schema({
     },
 
     paraTwoImage: {
-        type: String,
-        required: true,
+        public_id: {
+            type: String,
+        },
+        url: {
+            type: String,
+        },
     },
-
     paraTwoDescrition: {
         type: String,
         required: true,
@@ -58,8 +66,12 @@ const blogSchema = new mongoose.Schema({
 
 
     paraThreeImage: {
-        type: String,
-        required: true,
+        public_id: {
+            type: String,
+        },
+        url: {
+            type: String,
+        },
     },
 
     paraThreeDescrition: {
@@ -82,6 +94,11 @@ const blogSchema = new mongoose.Schema({
     createdBy: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
+        required: true,
+    },
+
+    auhterName: {
+        type: String,
         required: true,
     },
 
