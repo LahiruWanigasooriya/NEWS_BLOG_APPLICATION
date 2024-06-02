@@ -75,6 +75,8 @@ export const blogPost = catchAsyncErrors(async (req, res, next) => {
             new ErrorHandler("Error occured while uploading one or more images!", 500)
         );
     }
+
+    console.log(mainImageRes)
     const blogData = {
         title,
         intro,
