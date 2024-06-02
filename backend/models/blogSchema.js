@@ -20,7 +20,7 @@ const blogSchema = new mongoose.Schema({
     intro: {
         type: String,
         required: true,
-        minLength: [250, "Blog intro must contain at least 10 characters"],
+        minLength: [250, "Blog intro must contain at least 250 characters"],
     },
 
 
@@ -34,13 +34,11 @@ const blogSchema = new mongoose.Schema({
     },
     paraOneDescrition: {
         type: String,
-        required: true,
         minLength: [250, "Blog intro must contain at least 10 characters"],
     },
 
     paraOneTitle: {
         type: String,
-        required: true,
         minLength: [50, "Blog must contain at least 50 characters"],
     },
 
@@ -54,13 +52,11 @@ const blogSchema = new mongoose.Schema({
     },
     paraTwoDescrition: {
         type: String,
-        required: true,
         minLength: [250, "Blog intro must contain at least 10 characters"],
     },
 
     paraTwoTitle: {
         type: String,
-        required: true,
         minLength: [50, "Blog must contain at least 50 characters"],
     },
 
@@ -76,13 +72,11 @@ const blogSchema = new mongoose.Schema({
 
     paraThreeDescrition: {
         type: String,
-        required: true,
         minLength: [250, "Blog intro must contain at least 10 characters"],
     },
 
     paraThreeTitle: {
         type: String,
-        required: true,
         minLength: [50, "Blog must contain at least 50 characters"],
     },
 
@@ -97,16 +91,15 @@ const blogSchema = new mongoose.Schema({
         required: true,
     },
 
-    auhterName: {
+    authorName: {
         type: String,
         required: true,
     },
 
-    auhterAvatar: {
+    authorAvatar: {
         type: String,
         required: true,
     },
-
 });
 
 export const Blog = mongoose.model("Blog", blogSchema);
