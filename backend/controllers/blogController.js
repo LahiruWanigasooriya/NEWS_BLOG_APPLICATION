@@ -122,7 +122,6 @@ export const blogPost = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-
 export const deleteBlog = catchAsyncErrors(async (req, res, next) => {
     const { id } = req.params;
     const blog = await Blog.findById(id);
