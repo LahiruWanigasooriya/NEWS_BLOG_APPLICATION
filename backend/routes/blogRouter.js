@@ -4,7 +4,7 @@ import {
     deleteBlog,
     getAllBlogs,
     getSingleBlog,
-    //getMyBlogs,
+    getMyBlogs,
     //updateBlog,
 } from "../controllers/blogController.js";
 import { isAuthenticated, isAuthorized } from "../middlewares/auth.js";
@@ -15,5 +15,6 @@ router.post("/post", isAuthenticated, isAuthorized("Author"), blogPost);
 router.delete("/delete/:id", isAuthenticated, isAuthorized("Author"), deleteBlog);
 router.get("/all", getAllBlogs);
 router.get("/singleblog/:id", isAuthenticated, getSingleBlog);
+router.get("/myblogs", isAuthenticated, isAuthorized("Author"), getMyBlogs);
 
 export default router;

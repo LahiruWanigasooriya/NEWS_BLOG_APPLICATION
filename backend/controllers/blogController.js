@@ -155,3 +155,12 @@ export const getSingleBlog = catchAsyncErrors(async (req, res, next) => {
       blog,
     });
   });
+
+  export const getMyBlogs = catchAsyncErrors(async (req, res, next) => {
+    const createdBy = req.user._id;
+    const blogs = await Blog.find({ createdBy });
+    res.status(200).json({
+      success: true,
+      blogs,
+    });
+  });
