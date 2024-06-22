@@ -1,6 +1,6 @@
-import React, { createContext, useState } from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import React, { createContext, useState } from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
 
 export const Context = createContext({
   isAuthenticated: false,
@@ -10,7 +10,7 @@ const AppWrapper = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState({});
   const [blogs, setBlogs] = useState([]);
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState('dark'); // Initialize mode to 'dark'
 
   return (
     <Context.Provider
@@ -30,8 +30,9 @@ const AppWrapper = () => {
   );
 };
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppWrapper />
   </React.StrictMode>,
-)
+  document.getElementById('root')
+);
