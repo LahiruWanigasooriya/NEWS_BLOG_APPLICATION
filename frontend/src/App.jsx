@@ -15,12 +15,14 @@ import AllAuthors from "./components/pages/AllAuthors";
 //import { Context } from "./main";
 //import axios from "axios";
 import UpdateBlog from "./components/pages/UpdateBlog";
+import Navbar from "./components/layout/Navbar";
 
 const App = () => {
   return (
     <>
 
       <Router>
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
