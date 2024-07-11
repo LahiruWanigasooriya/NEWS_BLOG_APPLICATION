@@ -73,7 +73,7 @@ const Footer = () => {
           <Link to={"/"} target="_blank">
             <FaGitSquare />
           </Link>
-          <Link to={"https://www.youtube.com/@CodeWithZeeshu"} target="_blank">
+          <Link to={"https://www.youtube.com/@Dinamina_online"} target="_blank">
             <AiFillYoutube />
           </Link>
           <Link to={"/"} target="_blank">
