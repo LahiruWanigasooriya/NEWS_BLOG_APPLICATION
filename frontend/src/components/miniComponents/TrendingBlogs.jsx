@@ -33,7 +33,7 @@ const TrendingBlogs = () => {
 
   return (
     <div className="trending">
-      <h3>Trending</h3>
+      <h3>Trending Blogs</h3>
       <Carousel responsive={responsive}>
         {blogs && blogs.length > 0 ? (
           blogs.slice(0, 6).map((element) => {

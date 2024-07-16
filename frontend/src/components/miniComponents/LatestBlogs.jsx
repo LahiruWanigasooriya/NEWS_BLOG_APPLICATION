@@ -6,12 +6,8 @@ const LatestBlogs = ({ heading, newClass }) => {
   const { blogs } = useContext(Context);
 
   return (
-    <section
-      className={
-        newClass && newClass.length > 0 ? "dashboard-blogs blogs" : "blogs"
-      }
-    >
-      <h3>{heading}</h3>
+    <section className={newClass && newClass.length > 0 ? "dashboard-blogs blogs" : "blogs"}>
+      <h3>Latest Blogs</h3>
       <div className="container">
         {blogs &&
           blogs.map((element) => (
