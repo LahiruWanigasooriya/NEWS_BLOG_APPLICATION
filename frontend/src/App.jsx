@@ -17,8 +17,8 @@ import axios from "axios";
 import { Toaster } from 'react-hot-toast';
 
 const App = () => {
-  const { setUser, isAuthenticated, setIsAuthenticated, user, setBlogs } =
-    useContext(Context);
+  const { setUser, setIsAuthenticated, setBlogs } = useContext(Context);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -49,7 +49,7 @@ const App = () => {
     };
     fetchUser();
     fetchBlogs();
-  }, [isAuthenticated,user]);
+  }, []);
 
   return (
     <Router>
@@ -66,7 +66,7 @@ const App = () => {
         <Route path="/blog/update/:id" element={<UpdateBlog />} />
       </Routes>
       <Footer />
-      <Toaster/>
+      <Toaster />
     </Router>
   );
 };

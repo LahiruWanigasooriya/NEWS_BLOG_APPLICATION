@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { MdDarkMode } from 'react-icons/md';
@@ -9,9 +9,14 @@ import { Context } from '../../main';
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const { mode, setMode, isAuthenticated, user, setIsAuthenticated } = useContext(Context);
+  const { mode, setMode, isAuthenticated, user, setIsAuthenticated, setUser } = useContext(Context);
   const navigateTo = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    console.log('isAuthenticated:', isAuthenticated);
+    console.log('user:', user);
+  }, [isAuthenticated, user]);
 
   const handleNavbar = () => {
     setShow(!show);
@@ -24,6 +29,7 @@ const Navbar = () => {
         withCredentials: true,
       });
       setIsAuthenticated(false);
+      setUser(null); // Reset the user state
       toast.success(data.message);
       navigateTo('/');
     } catch (error) {
@@ -67,7 +73,7 @@ const Navbar = () => {
             >
               {mode === 'light' ? <CiLight className="light-icon" /> : <MdDarkMode className="dark-icon" />}
             </button>
-            {isAuthenticated && user.role === 'Author' && (
+            {isAuthenticated && user?.role === 'Author' && (
               <Link to="/dashboard" onClick={handleNavbar} className="dashboard-btn">
                 DASHBOARD
               </Link>

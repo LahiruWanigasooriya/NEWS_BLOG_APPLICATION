@@ -4,6 +4,13 @@ import App from './App.jsx';
 
 export const Context = createContext({
   isAuthenticated: false,
+  setIsAuthenticated: () => { },
+  user: {},
+  setUser: () => { },
+  blogs: [],
+  setBlogs: () => { },
+  mode: 'dark',
+  setMode: () => { },
 });
 
 const AppWrapper = () => {
