@@ -8,12 +8,12 @@ import { Context } from "../../main";
 const Home = () => {
   const { mode } = useContext(Context);
   return (
-      <article className={mode === "dark" ? "dark-bg" : "light-bg"}>
-        <HeroSection />
-        <TrendingBlogs />
-        <LatestBlogs />
-        <PopularAuthors />
-      </article>
+    <article className={mode === "dark" ? "dark-bg" : "light-bg"}>
+      <HeroSection />
+      <TrendingBlogs />
+      <LatestBlogs />
+      <PopularAuthors />
+    </article>
   );
 };
 

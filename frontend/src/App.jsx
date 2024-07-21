@@ -1,4 +1,4 @@
-import React, { useContext,useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/pages/Home';
@@ -14,6 +14,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import { Context } from "./main";
 import axios from "axios";
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   const { setUser, isAuthenticated, setIsAuthenticated, user, setBlogs } =
@@ -48,7 +49,7 @@ const App = () => {
     };
     fetchUser();
     fetchBlogs();
-  }, [isAuthenticated]);
+  }, [isAuthenticated,user]);
 
   return (
     <Router>
@@ -65,6 +66,7 @@ const App = () => {
         <Route path="/blog/update/:id" element={<UpdateBlog />} />
       </Routes>
       <Footer />
+      <Toaster/>
     </Router>
   );
 };
