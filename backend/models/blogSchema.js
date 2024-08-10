@@ -5,7 +5,7 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: [10, "Blog must contain at least 10 characters"],
-        maxLength: [40, "Blog must contain at most 40 characters"],
+        maxLength: [100, "Blog must contain at most 100 characters"],
     },
     mainImage: {
         public_id: {
@@ -20,7 +20,7 @@ const blogSchema = new mongoose.Schema({
     intro: {
         type: String,
         required: true,
-        minLength: [250, "Blog intro must contain at least 250 characters"],
+        minLength: [150, "Blog intro must contain at least 150 characters"],
     },
 
 
@@ -34,7 +34,7 @@ const blogSchema = new mongoose.Schema({
     },
     paraOneDescrition: {
         type: String,
-        minLength: [250, "Blog intro must contain at least 10 characters"],
+        minLength: [150, "Blog intro must contain at least 150 characters"],
     },
 
     paraOneTitle: {
@@ -52,7 +52,7 @@ const blogSchema = new mongoose.Schema({
     },
     paraTwoDescrition: {
         type: String,
-        minLength: [250, "Blog intro must contain at least 10 characters"],
+        minLength: [150, "Blog intro must contain at least 150 characters"],
     },
 
     paraTwoTitle: {
@@ -72,7 +72,7 @@ const blogSchema = new mongoose.Schema({
 
     paraThreeDescrition: {
         type: String,
-        minLength: [250, "Blog intro must contain at least 10 characters"],
+        minLength: [150, "Blog intro must contain at least 150 characters"],
     },
 
     paraThreeTitle: {
@@ -104,7 +104,7 @@ const blogSchema = new mongoose.Schema({
     published: {
         type: Boolean,
         default: false,
-      },
+    },
 });
 
 export const Blog = mongoose.model("Blog", blogSchema);

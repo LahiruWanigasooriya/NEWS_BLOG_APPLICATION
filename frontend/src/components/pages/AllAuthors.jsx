@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
+import PopularAuthors from "../miniComponents/PopularAuthors";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 
@@ -39,7 +40,10 @@ const AllAuthors = () => {
         ) : authors && authors.length > 0 ? (
           authors.map((element) => (
             <div className="card" key={element._id}>
-              <img src={element.avatar.url} alt="author_avatar" />
+              <img
+                src={element.avatar?.url || 'default-avatar-url.png'} // Check if avatar exists
+                alt="author_avatar"
+              />
               <h3>{element.name}</h3>
               <p>{element.role}</p>
             </div>

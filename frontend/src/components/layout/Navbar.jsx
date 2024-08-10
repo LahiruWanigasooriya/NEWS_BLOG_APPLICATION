@@ -79,13 +79,9 @@ const Navbar = () => {
               </Link>
             )}
             {!isAuthenticated ? (
-              <Link to="/login" onClick={handleNavbar} className="login-btn">
-                LOGIN
-              </Link>
+              <Link to="/login" onClick={handleNavbar} className="login-btn">LOGIN</Link>
             ) : (
-              <button className="logout-btn" onClick={handleLogout}>
-                LOGOUT
-              </button>
+              <button className="logout-btn" onClick={handleLogout}>LOGOUT</button>
             )}
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // Import the new method from 'react-dom/client'
 import App from './App.jsx';
 
 export const Context = createContext({
@@ -37,9 +37,10 @@ const AppWrapper = () => {
   );
 };
 
-ReactDOM.render(
+// Use createRoot instead of ReactDOM.render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <AppWrapper />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
