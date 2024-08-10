@@ -1,27 +1,23 @@
 import axios from "axios";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
-import { Context } from "../../main"; // Assuming this is the correct path to your Context
+import { Context } from "../../main";
 
 const PopularAuthors = () => {
-  const { authors, setAuthors } = useContext(Context);
+  const [authors, setAuthors] = useState([]);
 
   // Fetch authors from the backend API
   useEffect(() => {
     const fetchUser = async () => {
-      try {
-        const { data } = await axios.get(
-          "http://localhost:4000/api/v1/user/authors",
-          { withCredentials: true }
-        );
-        setAuthors(data.authors); // Set the fetched authors to context
-      } catch (error) {
-        console.error("Error fetching authors:", error);
-      }
+      const { data } = await axios.get(
+        "http://localhost:4000/api/v1/user/authors",
+        { withCredentials: true }
+      );
+      setAuthors(data.authors); // Set the fetched authors to context
     };
     fetchUser();
-  }, [setAuthors]);
+  }, []);
 
   return (
     <section className="popularAuthors">
@@ -29,13 +25,15 @@ const PopularAuthors = () => {
       <div className="container">
         {authors && authors.length > 0 ? (
           // Display authors if available
-          authors.slice(0, 4).map((element) => (
-            <Link className="card" key={element._id} to={`/authors/${element._id}`}>
-              <img src={element.avatar.url} alt="author" />
-              <p>{element.name}</p>
-              <p>{element.role}</p>
-            </Link>
-          ))
+          authors.slice(0, 4).map((element) => {
+            return (
+              <div className="card" key={element._id} >
+                <img src={element.avatar.url} alt="author" />
+                <p>{element.name}</p>
+                <p>{element.role}</p>
+              </div>
+            );
+          })
         ) : (
           // Display loading spinner while fetching authors
           <BeatLoader size={30} color="gray" />
