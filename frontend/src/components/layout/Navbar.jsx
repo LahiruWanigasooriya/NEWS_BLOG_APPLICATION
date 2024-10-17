@@ -41,7 +41,7 @@ const Navbar = () => {
     <section className={`header ${location.pathname === '/dashboard' ? 'hideNavbar' : mode === 'light' ? 'light-navbar' : 'dark-navbar'}`}>
       <nav>
         <div className="logo">
-          Zeta<span>Blog</span>
+          News<span>SNAP</span>
         </div>
         <div className={show ? 'links show' : 'links'}>
           <ul>
@@ -52,7 +52,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/blogs" onClick={handleNavbar}>
-                BLOGS
+                ARTICALS
               </Link>
             </li>
             <li>
