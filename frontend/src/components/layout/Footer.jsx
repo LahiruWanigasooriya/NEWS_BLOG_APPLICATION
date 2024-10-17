@@ -22,15 +22,12 @@ const Footer = () => {
         <div className="about">
           <h3>About</h3>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Consectetur possimus sed praesentium! Et sunt, distinctio veniam
-            ullam, nesciunt ex laudantium quidem error sint, eum explicabo.
+          NewsSnap is your go-to platform for quick, real-time news updates from around the world. Stay informed with bite-sized articles on the latest headlines, trending stories, and important events across various categories like politics, sports, technology, and entertainment.        </p>
+          <p>
+            <span>Email:</span>newssnap@gmail.com
           </p>
           <p>
-            <span>Email:</span>zk@gmail.com
-          </p>
-          <p>
-            <span>Phone:</span>0123987123
+            <span>Phone:</span>0111157220
           </p>
         </div>
         <div className="quick_links">

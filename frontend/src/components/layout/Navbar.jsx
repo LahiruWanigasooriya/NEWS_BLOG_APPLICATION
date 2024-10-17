@@ -52,7 +52,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/blogs" onClick={handleNavbar}>
-                ARTICALS
+                ARTICLES
               </Link>
             </li>
             <li>

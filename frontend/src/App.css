@@ -11,7 +11,7 @@
   display: none;
 }
 .dark-bg {
-  background: #181a2a;
+  background: #071C3C;
   color: #fff !important;
 }
 .light-bg {
@@ -83,10 +83,10 @@ h4 {
   transform: scale(1.03);
 }
 .blogs .container .card .category {
-  color: #2563eb;
+  color: #ffffff;
   font-weight: 600;
   text-transform: uppercase;
-  background: #8080802e;
+  background: #F15053;
   padding: 3px 8px;
   border-radius: 5px;
 }
@@ -263,7 +263,7 @@ h4 {
 .hero .card .category {
   position: relative;
   z-index: 1;
-  background: #2563eb;
+  background: #F15053;
   width: fit-content;
   font-weight: 600;
   padding: 4px 8px;
@@ -390,7 +390,7 @@ h4 {
   position: relative;
   z-index: 1;
   color: #fff;
-  background: #2563eb;
+  background: #F15053;
   width: fit-content;
   font-weight: 600;
   padding: 4px 8px;
