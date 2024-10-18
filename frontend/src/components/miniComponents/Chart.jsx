@@ -53,15 +53,15 @@ const Chart = () => {
           publishedBlogs.length > 0 ? publishedBlogs.length : 0,
           notPublishedBlogs.length > 0 ? notPublishedBlogs.length : 0,
         ],
-        borderColor: ["#0e7490", "#facc15"],
-        backgroundColor: ["#0e7490", "#facc15"],
+        borderColor: ["green", "#F15053"],
+        backgroundColor: ["green", "#F15053"],
         borderWidth: 1,
       },
     ],
   };
   return (
     <section className="chart-container" style={{ height: "90vh" }}>
-      <h3>BLOG ANALYTICS</h3>
+      <h3>BLOG ANALYSIS</h3>
       <Doughnut data={data} style={{ height: "550px" }} />
     </section>
   );

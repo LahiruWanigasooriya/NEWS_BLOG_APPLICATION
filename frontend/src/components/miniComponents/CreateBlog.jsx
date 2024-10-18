@@ -129,11 +129,11 @@ const CreateBlog = () => {
 
   return (
     <section className="create-blog">
-      <h3>CREATE BLOG</h3>
+      <h3 className="blog-title">CREATE BLOG</h3>
       <div className="container">
         <form onSubmit={handleBlog}>
           <div className="category-box">
-            <label>Category</label>
+            <label>Category :</label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -154,7 +154,7 @@ const CreateBlog = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label>BLOG MAIN IMAGE</label>
+            <label>Blog Main Image :</label>
             <img
               src={mainImagePreview ? `${mainImagePreview}` : "/imgPL.webp"}
               alt="mainImg"

@@ -646,13 +646,13 @@ nav .btns .login-btn {
 }
 
 nav .btns .dashboard-btn {
-  background: #7e22ce;
-  color: #fff;
+  background: #ffffff;
+  color: #000000;
   transition: 0.3s;
 }
 
 nav .btns .dashboard-btn:hover {
-  background: #581c87;
+  background: #66616a;
   transition: 0.3s;
 }
 
@@ -670,13 +670,13 @@ nav .btns .login-btn:hover {
 }
 
 nav .btns .logout-btn {
-  background: #facc15;
+  background: #ffffff;
   color: #111;
   transition: 0.3s;
 }
 
 nav .btns .logout-btn:hover {
-  background: #ca8a04;
+  background: #F15053;
   transition: 0.3s;
 }
 
@@ -1295,12 +1295,41 @@ footer .container:last-child .links a svg {
 }
 
 .sidebar ul button {
-  color: #fff;
+  color: #000000;
+  font-weight: 700;
   font-size: 18px;
   border-radius: 8px;
   padding: 8px 15px;
-  border: none;
+  border: 2px solid #000000;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: color 0.4s ease-in-out;
 }
+
+.sidebar ul button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -150%; /* Start far left, hidden initially */
+  width: 200%;
+  height: 300%;
+  background-color: #FF5733; /* Blade fill color */
+  transform: rotate(45deg); /* Diagonal blade effect */
+  transition: left 0.4s ease-in-out;
+  z-index: -1;
+}
+
+.sidebar ul button:hover::before {
+  left: 50%; /* Move the blade fully across, filling the button */
+  transform: translateX(-50%) rotate(45deg); /* Ensure it covers the whole button */
+}
+
+.sidebar ul button:hover {
+  color: #000000; /* Text color changes on hover */
+}
+
 
 .sidebar .mode-btn .dark-icon {
   color: #fff;
@@ -1328,27 +1357,27 @@ footer .container:last-child .links a svg {
 }
 
 .sidebar button:first-child {
-  background: #16a34a;
+  background: #ffffff;
 }
 
 .sidebar button:nth-child(2) {
-  background: #059669;
+  background: #ffffff;
 }
 
 .sidebar button:nth-child(3) {
-  background: #0e7490;
+  background: #ffffff;
 }
 
 .sidebar button:nth-child(4) {
-  background: #6d28d9;
+  background: #ffffff;
 }
 
 .sidebar button:nth-child(5) {
-  background: #be185d;
+  background: #ffffff;
 }
 
 .sidebar button:nth-child(6) {
-  background: #facc15;
+  background: #ffffff;
 }
 
 .icon-wrapper-arrow {
@@ -1516,17 +1545,17 @@ footer .container:last-child .links a svg {
   padding: 8px 0;
   width: 320px;
   float: right;
-  background: #7e22ce;
+  background: #fefefe;
   transition: 0.3s;
-  border: none;
-  color: #fff;
+  border: 1px solid black;
+  color: #000000;
   font-weight: 700;
   border-radius: 8px;
 }
 
 .create-blog form .create-btn:hover {
   transition: 0.3s;
-  background: #581c87;
+  background: #F15053;
 }
 
 @media (max-width: 667px) {
@@ -1542,16 +1571,25 @@ footer .container:last-child .links a svg {
   min-height: 80vh;
 }
 
+.profile-title {
+  position: absolute;
+  top: 20px;
+  left: 21.5%;
+  padding: 10px;
+  font-size: 32px;
+  font-weight: 700;
+  z-index: 10; /* Ensure it stays above other content */
+}
+
 .profile .avatar {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: skew(-20deg);
 }
 
 .profile .avatar img {
-  height: 320px;
+  height: 520px;
 }
 
 .profile .user-detail {
@@ -1739,14 +1777,19 @@ footer .container:last-child .links a svg {
 }
 
 /**************SINGLE BLOG******************************/
+.create-blog .blog-title {
+  text-align: left; 
+  margin-left: 0;  
+}
+
 .my-blogs {
-  display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-evenly;
 }
 
 .author-blog-card {
+  margin-top: 40px;
   width: 370px;
   min-height: 370px;
   max-height: 560px;
@@ -1765,10 +1808,10 @@ footer .container:last-child .links a svg {
 }
 
 .author-blog-card .category {
-  color: #2563eb;
+  color: #ffffff;
   font-weight: 600;
   text-transform: uppercase;
-  background: #8080802e;
+  background: #F15053;
   padding: 3px 8px;
   border-radius: 5px;
 }
@@ -1803,8 +1846,8 @@ footer .container:last-child .links a svg {
 }
 
 .author-blog-card a {
-  background: #facc15;
-  color: #000;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fdfdfd;
   font-weight: 700;
 }
 
@@ -1815,7 +1858,7 @@ footer .container:last-child .links a svg {
 }
 
 .author-blog-card a:hover {
-  background: #ca8a04;
+  background: rgba(255, 255, 255, 0.5);
   transition: 0.3s;
   cursor: pointer;
 }
@@ -1960,17 +2003,17 @@ footer .container:last-child .links a svg {
   padding: 8px 0;
   width: 320px;
   float: right;
-  background: #facc15;
+  background: #ffffff;
   transition: 0.3s;
-  border: none;
-  color: #000;
+  border: 1px solid gray;
+  color: #000000;
   font-weight: 700;
   border-radius: 8px;
 }
 
 .update-blog form .update-btn:hover {
   transition: 0.3s;
-  background: #ca8a04;
+  background: #F15053;
 }
 
 @media (max-width: 667px) {

@@ -5,6 +5,7 @@ const MyProfile = () => {
   const { user } = useContext(Context);
   return (
     <section className="profile">
+      <h3 className="profile-title">MY PROFILE</h3>
       <div className="avatar">
         <img src={user && user.avatar.url} alt="avatar" />
       </div>

@@ -34,6 +34,7 @@ const MyBlogs = () => {
   return (
     <>
       <section className="my-blogs">
+        <h3>MY BLOGS</h3>
         {myBlogs && myBlogs.length > 0
           ? myBlogs.map((element) => {
             return (
