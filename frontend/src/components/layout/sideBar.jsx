@@ -27,6 +27,7 @@ const SideBar = ({ setComponent }) => {
       toast.error(error.response.data.message);
     }
   };
+  
 
   const gotoHome = () => {
     navigateTo("/");
