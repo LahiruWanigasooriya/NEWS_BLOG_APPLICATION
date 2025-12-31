@@ -11,7 +11,7 @@ const PopularAuthors = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/authors",
+        "https://news-blog-backend.vercel.app/api/v1/user/authors",
         { withCredentials: true }
       );
       setAuthors(data.authors); // Set the fetched authors to context

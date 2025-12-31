@@ -19,37 +19,38 @@ import { Toaster } from 'react-hot-toast';
 const App = () => {
   const { setUser, setIsAuthenticated, setBlogs } = useContext(Context);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const { data } = await axios.get(
-          "http://localhost:4000/api/v1/myprofile",
-          {
-            withCredentials: true,
-          }
-        );
-        setUser(data.user);
-        setIsAuthenticated(true);
-      } catch (error) {
-        console.log(error);
-        setIsAuthenticated(false);
-        setUser({});
-      }
-    };
-    const fetchBlogs = async () => {
-      try {
-        const { data } = await axios.get(
-          "http://localhost:4000/api/v1/blog/all",
-          { withCredentials: true }
-        );
-        setBlogs(data.allBlogs);
-      } catch (error) {
-        setBlogs([]);
-      }
-    };
-    fetchUser();
-    fetchBlogs();
-  }, []);
+useEffect(() => {
+  const API = "https://news-blog-backend.vercel.app";
+
+  const fetchUser = async () => {
+    try {
+      const { data } = await axios.get(`${API}/api/v1/myprofile`, {
+        withCredentials: true,
+      });
+      setUser(data.user);
+      setIsAuthenticated(true);
+    } catch (error) {
+      console.log(error);
+      setIsAuthenticated(false);
+      setUser({});
+    }
+  };
+
+  const fetchBlogs = async () => {
+    try {
+      const { data } = await axios.get(`${API}/api/v1/blog/all`, {
+        withCredentials: true,
+      });
+      setBlogs(data.allBlogs);
+    } catch (error) {
+      setBlogs([]);
+    }
+  };
+
+  fetchUser();
+  fetchBlogs();
+}, []);
+
 
   return (
     <Router>
