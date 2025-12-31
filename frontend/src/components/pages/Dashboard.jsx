@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import SideBar from "../layout/SideBar";
+import SideBar from "../layout/SideBar"; 
 import MyBlogs from "../miniComponents/MyBlogs";
 import MyProfile from "../miniComponents/MyProfile";
 import CreateBlog from "../miniComponents/CreateBlog";
 import Chart from "../miniComponents/Chart";
 import { Context } from "../../main";
 import { Navigate } from "react-router-dom";
+
 const Dashboard = () => {
   const [component, setComponent] = useState("MyBlogs");
   const { mode, isAuthenticated } = useContext(Context);
