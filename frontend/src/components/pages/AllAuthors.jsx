@@ -14,7 +14,7 @@ const AllAuthors = () => {
     const fetchAuthors = async () => {
       try {
         const { data } = await axios.get(
-          "https://news-blog-backend.vercel.app/api/v1/user/authors",
+          "https://news-blog-backend-sooty.vercel.app/api/v1/user/authors",
           { withCredentials: true }
         );
         console.log('Authors fetched:', data); // Debugging log

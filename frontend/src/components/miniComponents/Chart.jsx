@@ -29,7 +29,7 @@ const Chart = () => {
   useEffect(() => {
     const fetchMyBlogs = async () => {
       const { data } = await axios.get(
-        "https://news-blog-backend.vercel.app/api/v1/blog/myblogs",
+        "https://news-blog-backend-sooty.vercel.app/api/v1/blog/myblogs",
         { withCredentials: true }
       );
       setMyBlogs(data.blogs);

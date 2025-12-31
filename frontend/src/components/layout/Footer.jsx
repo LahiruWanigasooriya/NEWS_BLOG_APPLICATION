@@ -5,7 +5,7 @@ import { FaGitSquare } from "react-icons/fa";
 import { Context } from "../../main";
 
 const Footer = () => {
-  const isDashboard = useLocation("https://news-blog-backend.vercel.app/dashboard");
+  const isDashboard = useLocation("https://news-blog-backend-sooty.vercel.app/dashboard");
   const { mode, setMode } = useContext(Context);
 
   return (

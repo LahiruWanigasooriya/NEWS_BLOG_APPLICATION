@@ -11,7 +11,7 @@ const SingleBlog = () => {
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
-          `https://news-blog-backend.vercel.app/api/v1/blog/singleblog/${id}`,
+          `https://news-blog-backend-sooty.vercel.app/api/v1/blog/singleblog/${id}`,
           { withCredentials: true }
         );
         setBlog(data.blog);

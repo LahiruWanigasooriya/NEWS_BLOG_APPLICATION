@@ -25,7 +25,7 @@ const Navbar = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.get('https://news-blog-backend.vercel.app/api/v1/user/logout', {
+      const { data } = await axios.get('https://news-blog-backend-sooty.vercel.app/api/v1/user/logout', {
         withCredentials: true,
       });
       setIsAuthenticated(false);

@@ -20,7 +20,7 @@ const App = () => {
   const { setUser, setIsAuthenticated, setBlogs } = useContext(Context);
 
 useEffect(() => {
-  const API = "https://news-blog-backend.vercel.app";
+  const API = "https://news-blog-backend-sooty.vercel.app";
 
   const fetchUser = async () => {
     try {
