@@ -13,20 +13,27 @@ const SideBar = ({ setComponent }) => {
   const { mode, setMode, setIsAuthenticated, user } = useContext(Context);
   const navigateTo = useNavigate();
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.get(
-        "http://localhost:5173/api/v1/user/logout",
-        { withCredentials: true }
-      );
-      setIsAuthenticated(false);
-      toast.success(data.message);
-      navigateTo("/");
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
-  };
+  const handleLogout = async () => {
+    await axios
+      .get("http://localhost:4000/api/v1/user/logout", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        
+        // --- ADD THESE LINES ---
+        localStorage.removeItem("isAuthenticated");
+        localStorage.removeItem("user");
+        // -----------------------
+        
+        setIsAuthenticated(false);
+        setUser({});
+        navigateTo("/login");
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      });
+};
 
   const gotoHome = () => {
     navigateTo("/");

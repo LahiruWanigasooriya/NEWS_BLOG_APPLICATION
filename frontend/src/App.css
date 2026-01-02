@@ -189,78 +189,136 @@ h4 {
   }
 }
 
-.all-authors {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* --- Page Layout --- */
+.all-authors-page {
+  padding: 50px 20px;
+  min-height: 100vh;
+  text-align: center;
 }
 
-.all-authors h2 {
-  font-size: 1.5rem;
-  margin: 1.75rem 0 1.75rem -1210px;
-}
-
-.all-authors .container {
-  min-width: 1500px;
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-evenly;
-}
-
-.all-authors .container .card {
-  width: 300px;
-  height: 350px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.all-authors .container .card img {
-  height: 250px;
-  width: auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
-}
-
-.all-authors .container .card img:hover {
-  transform: scale(1.05); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-}
-
-
-.all-authors .container .card p:last-child {
-  font-weight: 300;
-  color: gray;
+.authors-header h2 {
+  font-size: 2.5rem;
   margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
-@media (max-width: 1520px) {
-  .all-authors .container {
-    min-width: 100%;
-  }
+.underline {
+  width: 80px;
+  height: 4px;
+  background-color: #1d9bf0; /* Or your brand color */
+  margin: 0 auto 50px auto;
+  border-radius: 2px;
 }
 
-@media (max-width: 659px) {
-  .all-authors .container {
-    gap: 20px;
-  }
-
-  .all-authors .container .card {
-    width: 400px;
-    margin: 0 auto;
-    height: 300px;
-  }
+/* --- Responsive Grid Layout --- */
+.authors-grid {
+  display: grid;
+  /* This creates columns that auto-fit: minimum 250px wide, max 1 fraction of space */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
 }
 
-@media (max-width: 459px) {
-  .all-authors .container .card {
-    width: 100%;
-  }
+/* --- Card Base Styling --- */
+.author-card {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Hover Effect: Lifts the card up */
+.author-card:hover {
+  transform: translateY(-10px);
+}
+
+/* --- Theme Specifics (Keeping your color palette) --- */
+.light-card {
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+}
+.light-card:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark-card {
+  background: #1e1e1e;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #333;
+}
+.dark-card:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  border-color: #444;
+}
+
+/* --- Avatar Styling --- */
+.image-wrapper {
+  width: 110px;
+  height: 110px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  padding: 4px; /* Creates a gap between image and border */
+  border: 2px solid; /* Color inherited below */
+}
+
+.light-card .image-wrapper {
+  border-color: #ddd;
+}
+.dark-card .image-wrapper {
+  border-color: #444;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* --- Typography --- */
+.card-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+/* --- Role Badge (New Feature) --- */
+.role-badge {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.light-card .role-badge {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+.dark-card .role-badge {
+  background-color: #2a2a2a;
+  color: #90caf9;
+  border: 1px solid #444;
+}
+
+/* --- Loader Position --- */
+.loader-container {
+  grid-column: 1 / -1; /* Spans full width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
 }
 
 

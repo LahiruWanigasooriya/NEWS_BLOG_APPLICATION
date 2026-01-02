@@ -99,9 +99,20 @@ export const getMyProfile = catchAsyncErrors((req, res, next) => {
 });
 
 export const getAllAuthors = catchAsyncErrors(async (req, res, next) => {
-    const authors = await User.find({ role: "author" });
+    // We check for both "Author" and "author" to be safe
+    const authors = await User.find({ role: { $in: ["Author", "author"] } });
+    
     res.status(200).json({
         success: true,
         authors,
     });
+});
+
+
+export const getUser = catchAsyncErrors(async (req, res, next) => {
+  const user = req.user;
+  res.status(200).json({
+    success: true,
+    user,
+  });
 });

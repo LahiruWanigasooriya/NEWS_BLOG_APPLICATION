@@ -1,41 +1,48 @@
-import React, { useContext, useEffect } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/pages/Home';
-import About from './components/pages/About';
-import Blogs from './components/pages/Blogs';
-import SingleBlog from './components/pages/SingleBlog';
-import Dashboard from './components/pages/Dashboard';
-import Register from './components/pages/Register';
-import Login from './components/pages/Login';
-import AllAuthors from './components/pages/AllAuthors';
-import UpdateBlog from './components/pages/UpdateBlog';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
+import React, { useContext, useEffect } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import Blogs from "./components/pages/Blogs";
+import SingleBlog from "./components/pages/SingleBlog";
+import Dashboard from "./components/pages/Dashboard";
+import Register from "./components/pages/Register";
+import Login from "./components/pages/Login";
+import AllAuthors from "./components/pages/AllAuthors";
+import UpdateBlog from "./components/pages/UpdateBlog";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 import { Context } from "./main";
 import axios from "axios";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
-  const { setUser, setIsAuthenticated, setBlogs } = useContext(Context);
+  const { setUser, setIsAuthenticated, setBlogs, isAuthorized } =
+    useContext(Context);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const { data } = await axios.get(
-          "http://localhost:4000/api/v1/myprofile",
-          {
-            withCredentials: true,
-          }
+        // CORRECT URL: Must include /user/ because of App.js
+        const response = await axios.get(
+          "http://localhost:4000/api/v1/user/myprofile",
+          { withCredentials: true }
         );
-        setUser(data.user);
+
+        setUser(response.data.user);
         setIsAuthenticated(true);
       } catch (error) {
-        console.log(error);
         setIsAuthenticated(false);
         setUser({});
+        localStorage.removeItem("isAuthenticated"); 
+        localStorage.removeItem("user");
       }
     };
+
+    fetchUser();
+  }, [setIsAuthenticated, setUser]);
+
+  useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const { data } = await axios.get(
@@ -47,7 +54,6 @@ const App = () => {
         setBlogs([]);
       }
     };
-    fetchUser();
     fetchBlogs();
   }, []);
 

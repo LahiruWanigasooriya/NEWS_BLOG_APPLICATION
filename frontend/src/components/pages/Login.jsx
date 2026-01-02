@@ -24,6 +24,9 @@ const Login = () => {
       )
       .then((res) => {
         toast.success(res.data.message);
+        localStorage.setItem("isAuthenticated", "true");
+        // We convert the user object to a string to save it
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         setIsAuthenticated(true);
         setUser(res.data.user);
         setEmail("");

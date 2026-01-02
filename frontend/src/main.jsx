@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import ReactDOM from 'react-dom/client'; // Import the new method from 'react-dom/client'
+import ReactDOM from 'react-dom/client'; 
 import App from './App.jsx';
 
 export const Context = createContext({
@@ -14,18 +14,30 @@ export const Context = createContext({
 });
 
 const AppWrapper = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState({});
-  const [blogs, setBlogs] = useState([]);
-  const [mode, setMode] = useState('dark'); // Initialize mode to 'dark'
+  // 1. Auth State
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem("isAuthenticated") === "true";
+  });
+
+  // 2. User State
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : {};
+  });
+
+  // 3. Blogs State (THIS WAS MISSING)
+  const [blogs, setBlogs] = useState([]); 
+
+  // 4. Mode State
+  const [mode, setMode] = useState('dark'); 
 
   return (
     <Context.Provider
       value={{
         user,
         setUser,
-        blogs,
-        setBlogs,
+        blogs,     // Now this is defined
+        setBlogs,  // Now this is defined
         mode,
         setMode,
         isAuthenticated,
@@ -37,7 +49,6 @@ const AppWrapper = () => {
   );
 };
 
-// Use createRoot instead of ReactDOM.render
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

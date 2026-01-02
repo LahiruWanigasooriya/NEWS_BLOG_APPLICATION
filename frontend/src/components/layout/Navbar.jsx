@@ -22,20 +22,27 @@ const Navbar = () => {
     setShow(!show);
   };
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.get('http://localhost:4000/api/v1/user/logout', {
+  const handleLogout = async () => {
+    await axios
+      .get("http://localhost:4000/api/v1/user/logout", {
         withCredentials: true,
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        
+        // --- ADD THESE LINES ---
+        localStorage.removeItem("isAuthenticated");
+        localStorage.removeItem("user");
+        // -----------------------
+        
+        setIsAuthenticated(false);
+        setUser({});
+        navigateTo("/login");
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
       });
-      setIsAuthenticated(false);
-      setUser(null); // Reset the user state
-      toast.success(data.message);
-      navigateTo('/');
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
-  };
+};
 
   return (
     <section className={`header ${location.pathname === '/dashboard' ? 'hideNavbar' : mode === 'light' ? 'light-navbar' : 'dark-navbar'}`}>
